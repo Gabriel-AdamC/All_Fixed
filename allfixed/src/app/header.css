@@ -1,8 +1,9 @@
 .headerComponent {
-  background-color: #a4c991;
+  background: #c76000;
+  background: linear-gradient(0deg, rgba(199, 96, 0, 1) 0%, rgb(255, 217, 0) 100%);
   padding: 10px 20px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} 
