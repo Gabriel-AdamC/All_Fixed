@@ -10,6 +10,7 @@ const FormContact = () => {
         const [message, setMessage] = useState('');
         const check = [Math.floor(Math.random() * 21) + 1, Math.floor(Math.random() * 21) + 1];
         const [step, setStep] = useState(1);
+        const [direction, setDirection] = useState(1);
 
         const handleChange = (e) => {
             const { name, value } = e.target;
@@ -50,63 +51,90 @@ const FormContact = () => {
                 <AnimatePresence mode="wait">
                     {step === 1 && (
                         <motion.div
-                        key={1}
-                        // Add your animation props here (e.g., initial, animate, exit, transition)
-                        
+                        key={1}                        
+                        initial={direction === 1 ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={direction === 1 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }}
+                        transition={{ duration: 0.8, type: "spring" }}                        
                         >
                         {<div className="formpiece" style={{ display: step === 1 ? 'block' : 'none' }}>
-                            <label htmlFor="name">Name:</label>
-                            <input type="text" id="name" name="name" required onChange={handleChange} />
+                            <label className="texts" htmlFor="name">Name:</label>
+                            <input className="inputs" type="text" id="name" name="name" required onChange={handleChange} />
                         </div>}
                         </motion.div>
                     )}
                     {step === 2 && (
                         <motion.div
                         key={2}
-                        // Add your animation props here
+                        initial={direction === 1 ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={direction === 1 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }}
+                        transition={{ duration: 0.8, type: "spring" }} 
                         >
-                        {/* Step 2 content */}
+                        {<div className="formpiece" style={{ display: step === 2 ? 'block' : 'none' }}>
+                            <label className="texts" htmlFor="email">Email:</label>
+                            <input className="inputs" type="email" id="email" name="email" required onChange={handleChange} />
+                        </div>}
+                        </motion.div>
+                    )}
+                    {step === 3 && (
+                        <motion.div
+                        key={3}
+                        initial={direction === 1 ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={direction === 1 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }}
+                        transition={{ duration: 0.8, type: "spring" }} 
+                        >
+                        {<div className="formpiece" style={{ display : step === 3 ? 'block' : 'none' }}>
+                            <label className="texts" htmlFor="message">Message:</label>
+                            <textarea className="inputs" id="message" name="message" required onChange={handleChange}></textarea>
+                        </div>}
+                        </motion.div>
+                    )}
+                    {step === 4 && (
+                        <motion.div
+                        key={4}
+                        initial={direction === 1 ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={direction === 1 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }}
+                        transition={{ duration: 0.8, type: "spring" }} 
+                        >
+                        {<div className="formpiece" style={{ display : step === 4 ? 'block' : 'none' }}>
+                            <label className="texts" htmlFor="message">Please answer this question to verify you are human:</label>
+                            <input className="inputs" type="text" id="captcha" name="captcha" placeholder={`What is ${check[0]} + ${check[1]}?`} required />
+                        </div>}
                         </motion.div>
                     )}
                     
                 </AnimatePresence>
 
-                
+                <div className="button-row">
+                    <motion.button
+                        className="buttons" 
+                        onClick={() => {
+                            setStep(step - 1);
+                            setDirection(-1);
+                        }} 
+                        disabled={step === 1}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                    >Back
+                    </motion.button>
 
-                <div className="formpiece" style={{ display: step === 2 ? 'block' : 'none' }}>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required onChange={handleChange} />
+                    <motion.button
+                        className="buttons" 
+                        id="button" 
+                        type="submit" 
+                        onClick={(e) => {
+                            setDirection(1);
+                            submit(e);
+                        }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        {step < 4 ? "Next" : "Submit"}
+                    </motion.button>
                 </div>
-                
-                <div className="formpiece" style={{ display : step === 3 ? 'block' : 'none' }}>
-                    <label htmlFor="message">Message:</label>
-                    <textarea id="message" name="message" required onChange={handleChange}></textarea>
-                </div>
-
-                <div className="formpiece" style={{ display : step === 4 ? 'block' : 'none' }}>
-                    <label htmlFor="message">Please answer this question to verify you are human:</label>
-                    <input type="text" id="captcha" name="captcha" placeholder={`What is ${check[0]} + ${check[1]}?`} required />
-                </div>
-
-                <motion.button
-                 className="buttons" 
-                 onClick={() => setStep(step - 1)} disabled={step === 1}
-                 whileHover={{ scale: 1.1 }}
-                 whileTap={{ scale: 0.95 }}
-                >Back
-                </motion.button>
-
-                <motion.button
-                  className="buttons" 
-                  id="button" 
-                  type="submit" 
-                  onClick={submit}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                    {step < 4 ? "Next" : "Submit"}
-                </motion.button>
-
             </form>
         </div>
     )
