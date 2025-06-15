@@ -31,6 +31,18 @@
     margin-right: auto;
 }
 
+.topRow {
+    display: flex;
+    justify-content: space-between;
+    width: 340px;
+}
+
+.count {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 50px;
+}
+
 .button-row {
     margin-left: -60px;
     display: flex;
