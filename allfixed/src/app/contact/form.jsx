@@ -37,6 +37,7 @@ const FormContact = () => {
                     return;
                 }
                 else {
+                    setStep(step + 1);
                     return;
                 }
             }
@@ -62,8 +63,8 @@ const FormContact = () => {
                             {...motionProps}                     
                             >
                             {<div className="formpiece" style={{ display: step === 1 ? 'block' : 'none' }}>
-                                <label className="texts" htmlFor="name">Name:</label>
-                                <input className="inputs" type="text" id="name" name="name" required onChange={handleChange} />
+                                <p className="texts">Name:</p>
+                                <input className="inputs" type="text" id="name" name="name" required placeholder={name === "" ? "Name:" : name} autoComplete="off" onChange={handleChange} />
                             </div>}
                             </motion.div>
                         )}
@@ -73,8 +74,8 @@ const FormContact = () => {
                             {...motionProps} 
                             >
                             {<div className="formpiece" style={{ display: step === 2 ? 'block' : 'none' }}>
-                                <label className="texts" htmlFor="email">Email:</label>
-                                <input className="inputs" type="email" id="email" name="email" required onChange={handleChange} />
+                                <p className="texts">E-mail:</p>
+                                <input className="inputs" type="email" id="email" name="email" required placeholder={email === "" ? "e-mail:" : email} autoComplete="off" onChange={handleChange} />
                             </div>}
                             </motion.div>
                         )}
@@ -84,24 +85,25 @@ const FormContact = () => {
                             {...motionProps} 
                             >
                             {<div className="formpiece" style={{ display : step === 3 ? 'block' : 'none' }}>
-                                <label className="texts" htmlFor="message">Message:</label>
-                                <textarea className="inputs" id="message" name="message" required onChange={handleChange}></textarea>
+                                <p className="texts">Message:</p>
+                                <textarea className="inputs" id="message" name="message" required placeholder={message === "" ? "Message:" : message} autoComplete="off" onChange={handleChange}></textarea>
                             </div>}
                             </motion.div>
                         )}
                         {step === 4 && (
                             <motion.div 
                             key={4} 
-                            {...motionProps}>
-                                <div className="formpiece">
-                                    <label className="texts" htmlFor="captcha">Please answer this question to verify you are human:</label>
-                                    <input className="inputs" type="text" id="captcha" name="captcha" placeholder={`What is ${check[0]} + ${check[1]}?`} required />
-                                </div>
+                            {...motionProps}
+                            >
+                            <div className="formpiece">
+                                <p className="texts">Verification:</p> 
+                                <input className="inputs" type="text" id="captcha" name="captcha" placeholder={`What is ${check[0]} + ${check[1]}?`} autoComplete="off" required />
+                            </div>
                             </motion.div>
                         )}
                         
                     </AnimatePresence>
-                    <p>/4</p>
+                    <p className="count">{step}/4</p>
                 </div>
 
                 <div className="button-row">
@@ -121,7 +123,6 @@ const FormContact = () => {
                         id="button" 
                         type="submit" 
                         onClick={(e) => {
-                            setStep(step + 1);
                             submit(e);
                         }}
                         whileHover={{ scale: 1.1 }}
