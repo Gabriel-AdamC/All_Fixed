@@ -1,11 +1,24 @@
-.containerImage {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}  
+.contactPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.containerImage img {
+    background-image: url("/AFContactPage.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    padding: 20px;
+    position: relative;
     width: 100%;
-    height: auto;
-    display: block;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .contactPage {
+        padding: 10px;
+        font-size: 1rem;
+    }
 }

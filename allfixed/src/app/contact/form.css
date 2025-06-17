@@ -15,7 +15,8 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(219, 198, 172);
-    width: 35vh;
+    width: 90%
+    max-width: 400px;
     height: 15vh;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -40,7 +41,9 @@
 .topRow {
     display: flex;
     justify-content: space-between;
-    width: 340px;
+    width: 100%;
+    max-width:340px;
+    flex-wrap: wrap;
 }
 
 .count {
@@ -53,14 +56,17 @@
     margin-left: -60px;
     display: flex;
     justify-content: space-between;
-    width: 340px;
+    width: 100%;
+    max-width:340px;
+    
 }
 
 .buttons {
     transition-duration: 0.2s;
     background-color: white;
     color: rgb(0, 115, 160);
-    width: 150px;
+    width: 45%;
+    max-width: 150px;
     height: 40px;
     border-radius: 20px;
 }
@@ -70,3 +76,20 @@
     color: white;
 }
     
+@media (max-width: 500px) {
+    .topRow,
+    .button-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .formpiece {
+        height: auto;
+        padding: 20px;
+    }
+}
