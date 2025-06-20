@@ -5,8 +5,7 @@
     justify-content: center;
     min-height: 40vh;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    background-color: #e9e7e7;
 }
 
 .formpiece {
@@ -14,11 +13,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(219, 198, 172);
-    width: 90%
-    max-width: 400px;
+    background-color: #a1a1a1;
+    width: 90%;
     height: 15vh;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 10 4px 4px rgba(0, 0, 0, 0.1);   
 }
@@ -26,12 +24,14 @@
 .texts {
     font-size: 20px;
     text-align: center;
-    margin: 10px;
+    margin: 5px;
 }
 
 .inputs {
     width: 80%;
     max-width: 400px;
+    height: 8vh;
+    max-height: 15vh;
     border-radius: 10px;
     background-color: rgb(236, 236, 234);
     display: block;
@@ -49,11 +49,10 @@
 .count {
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 50px;
+    font-size: 20px;
 }
 
 .button-row {
-    margin-left: -60px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -68,7 +67,7 @@
     width: 45%;
     max-width: 150px;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .buttons:hover {
@@ -76,20 +75,4 @@
     color: white;
 }
     
-@media (max-width: 500px) {
-    .topRow,
-    .button-row {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .buttons {
-        width: 80%;
-        margin-bottom: 10px;
-    }
-
-    .formpiece {
-        height: auto;
-        padding: 20px;
-    }
-}
